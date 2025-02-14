@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up Form</title>
+</head>
+
+<body>
+    <div>
+        <h2>Sign Up Form</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" oninput="validateName()" />
+            <span id="nameMessage"></span>
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" oninput="validateEmail()" />
+            <span id="emailMessage"></span>
+            <br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" oninput="validatePassword()" />
+            <span id="passwordMessage"></span>
+            <br><br>
+
+            <button type="submit" disabled id="submitBtn">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById('name').value;
+            let nameMessage = document.getElementById('nameMessage');
+            let nameInput = document.getElementById('name');
+            if (name.trim() === '') {
+                nameMessage.textContent = "Name cannot be empty";
+                nameInput.style.borderColor = "red";
+            } else {
+                nameMessage.textContent = "";
+                nameInput.style.borderColor = "green";
+            }
+            validateSubmitButton();
+        }
+
+        function validateEmail() {
+            let email = document.getElementById('email').value;
+            let emailMessage = document.getElementById('emailMessage');
+            let emailInput = document.getElementById('email');
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailMessage.textContent = "Please enter a valid email address";
+                emailInput.style.borderColor = "red";
+            } else {
+                emailMessage.textContent = "";
+                emailInput.style.borderColor = "green";
+            }
+            validateSubmitButton();
+        }
+
+        function validatePassword() {
+            let password = document.getElementById('password').value;
+            let passwordMessage = document.getElementById('passwordMessage');
+            let passwordInput = document.getElementById('password');
+            let passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!passwordRegex.test(password)) {
+                passwordMessage.textContent = "Password must be at least 8 characters long, with 1 uppercase letter and 1 number";
+                passwordInput.style.borderColor = "red";
+            } else {
+                passwordMessage.textContent = "";
+                passwordInput.style.borderColor = "green";
+            }
+            validateSubmitButton();
+        }
+
+        function validateSubmitButton() {
+            let nameValid = document.getElementById('name').value.trim() !== '';
+            let emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value);
+            let passwordValid = /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(document.getElementById('password').value);
+
+            let submitBtn = document.getElementById('submitBtn');
+            if (nameValid && emailValid && passwordValid) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
