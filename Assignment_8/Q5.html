@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Word Count</title>
+</head>
+
+<body>
+    <div>
+        <label for="textarea">Type something:</label><br>
+        <textarea id="textarea" rows="5" cols="50" oninput="updateWordCount()"></textarea>
+        <p>Word Count: <span id="wordCount">0</span></p>
+    </div>
+
+    <script>
+        function updateWordCount() {
+            let text = document.getElementById('textarea').value;
+            let wordCount = text.trim().split(/\s+/).filter(function (word) {
+                return word.length > 0;
+            }).length;
+            document.getElementById('wordCount').textContent = wordCount;
+        }
+    </script>
+</body>
+
+</html>

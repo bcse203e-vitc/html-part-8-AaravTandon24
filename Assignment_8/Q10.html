@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Font Size Adjuster</title>
+</head>
+
+<body>
+    <h1>Dynamic Font Size Adjuster</h1>
+
+    <p id="textParagraph">This is a random paragraph. I am Aarav Tandon.</p>
+
+    <div>
+        <button onclick="changeFontSize('increase')">Increase Font Size</button>
+        <button onclick="changeFontSize('decrease')">Decrease Font Size</button>
+    </div>
+
+    <script>
+        let currentFontSize = 16;
+
+        function changeFontSize(action) {
+            let paragraph = document.getElementById('textParagraph');
+
+            if (action === 'increase') {
+                currentFontSize += 2;
+            } else if (action === 'decrease') {
+                currentFontSize -= 2;
+            }
+
+            paragraph.style.fontSize = currentFontSize + 'px';
+        }
+    </script>
+</body>
+
+</html>

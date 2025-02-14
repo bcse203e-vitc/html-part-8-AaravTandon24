@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Key Press Display</title>
+</head>
+
+<body>
+    <div>
+        <h1>Key Pressed: <span id="keyDisplay">None</span></h1>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', function (event) {
+            document.getElementById('keyDisplay').textContent = `You pressed ${event.key}`;
+        });
+    </script>
+</body>
+
+</html>
